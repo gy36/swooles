@@ -126,7 +126,7 @@ class Websocket
     {
         $this->table = new \swoole_table(1024);
         $this->table->column('fd', \swoole_table::TYPE_INT);
-        $this->table->column('userid', \swoole_table::TYPE_INT);
+        $this->table->column('userid', \swoole_table::TYPE_STRING,64);
         $this->table->create();
     }
 
