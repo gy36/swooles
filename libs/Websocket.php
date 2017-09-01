@@ -30,8 +30,11 @@ class Websocket
         $ws = new \swoole_websocket_server("0.0.0.0", $this->port);
 
         $ws->on('open', [$this,'open']);//建立连接
-
-
+		
+		$ws->set(array(
+			'log_file' => '/root/swoole/swoole.log',    //开启两个worker进程
+		));
+		
         $ws->on('message',[$this,'message']);//通信
 
         $ws->on('close', [$this,'close']);//关闭连接
